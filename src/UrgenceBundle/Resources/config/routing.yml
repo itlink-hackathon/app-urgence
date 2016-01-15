@@ -1,0 +1,3 @@
+urgence_homepage:
+    path:     /
+    defaults: { _controller: UrgenceBundle:Default:index }
