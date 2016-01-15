@@ -24,7 +24,6 @@
         "sensio/framework-extra-bundle": "^3.0.2",
         "incenteev/composer-parameter-handler": "~2.0",        
 		"willdurand/js-translation-bundle" : "@stable",
-        "parse/php-sdk" : "1.1.*",
         "bmatzner/jquery-ui-bundle": "*"
     },
     "require-dev": {
