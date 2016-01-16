@@ -8,7 +8,7 @@ urgence_alertsecours:
     
 urgence_voiralertes:
     path:     /voir-alertes
-    defaults: { _controller: UrgenceBundle:Default:voiralertes }
+    defaults: { _controller: UrgenceBundle:Alert:voirAlertes }
 
 urgence_ln:
     path:     /form

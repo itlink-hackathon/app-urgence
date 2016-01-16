@@ -10,4 +10,9 @@ class AlertController extends Controller
     {
         return $this->render('UrgenceBundle:Alert:alert.html.twig');
     }
+    
+    public function voirAlertesAction()
+    {
+        return $this->render('UrgenceBundle:Alert:voirAlertes.html.twig');
+    }
 }
