@@ -30,13 +30,13 @@ CREATE TABLE IF NOT EXISTS `alert` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_parse` varchar(80) DEFAULT NULL,
   `id_alert_type` int(11) NOT NULL,
-  `id_gravity` int(11) NOT NULL,
+  `id_severity` int(11) NOT NULL,
   `info` varchar(255) NOT NULL,
   `lat_pos` float(10,6) NOT NULL,
   `long_pos` float(10,6) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_alert_type` (`id_alert_type`),
-  KEY `id_gravity` (`id_gravity`)
+  KEY `id_severity` (`id_severity`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -54,10 +54,10 @@ CREATE TABLE IF NOT EXISTS `alert_type` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `gravity`
+-- Structure de la table `severity`
 --
 
-CREATE TABLE IF NOT EXISTS `gravity` (
+CREATE TABLE IF NOT EXISTS `severity` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
@@ -66,10 +66,10 @@ CREATE TABLE IF NOT EXISTS `gravity` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `identity`
+-- Structure de la table `public_user`
 --
 
-CREATE TABLE IF NOT EXISTS `identity` (
+CREATE TABLE IF NOT EXISTS `public_user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `last_name` varchar(50) NOT NULL,
   `first_name` varchar(50) NOT NULL,
@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `identity` (
 -- Contraintes pour la table `alert`
 --
 ALTER TABLE `alert`
-  ADD CONSTRAINT `fk_gravity` FOREIGN KEY (`id_gravity`) REFERENCES `gravity` (`id`),
+  ADD CONSTRAINT `fk_severity` FOREIGN KEY (`id_severity`) REFERENCES `severity` (`id`),
   ADD CONSTRAINT `fk_type` FOREIGN KEY (`id_alert_type`) REFERENCES `alert_type` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
