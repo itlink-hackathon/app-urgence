@@ -40,8 +40,6 @@ CREATE TABLE IF NOT EXISTS `alert` (
   PRIMARY KEY (`id`),
   KEY `id_alert_type` (`id_alert_type`),
   KEY `id_severity` (`id_severity`),
-  KEY `id_alert_type_2` (`id_alert_type`),
-  KEY `id_severity_2` (`id_severity`),
   KEY `id_user` (`id_user`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
