@@ -70,7 +70,7 @@
                                     <input id="obtenir-position-radio" type="radio" name="position-group"> Position GPS
                                 </label>
                             </div>
-                            <button id="obtenir-position-btn" class="btn btn-default"><i class="fa fa-map-marker"></i> Obtenir</button>
+                            <button type="button" id="obtenir-position-btn" class="btn btn-default"><i class="fa fa-map-marker"></i> Obtenir</button>
                             <div>
                                <span id="geolocate-error-msg-container error-display"></span>
                             </div>
@@ -125,11 +125,17 @@
                   }
             });
         });
-        
-        // A NE PAS ENLEVER !!!
-        var map = mapModule.init('map-indiquer-position');
-        alerterModule.init(map);
     });
+</script>
+
+<script type="text/javascript">
+function initMap() {
+    var map = mapModule.init('map-indiquer-position');
+    alerterModule.init(map);
+};
+</script>
+<script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBspTNgVFapTrsO_xYRY5Zzbx1nfDJPVXg&callback=initMap">
 </script>
 
 {% endblock %}

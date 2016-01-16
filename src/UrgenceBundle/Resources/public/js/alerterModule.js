@@ -1,8 +1,10 @@
 var alerterModule = (function() {
     
     var map_enabled;
+    var markers;
     
     function init(map) {
+        markers = [];
         enableDisableObtenirPositionBtn();
         disableMap(map);
         
@@ -11,13 +13,12 @@ var alerterModule = (function() {
            enableDisableMap(map);
         });
         
-        var myLayer = L.mapbox.featureLayer().addTo(map);
-        initGeolocation(map, myLayer);
+        initGeolocation(map);
         
-        map.on('click', function(e) {
+        map.addListener('click', function(e) {
             if (map_enabled) {
-                map.panTo(e.latlng);
-                setPosition(map, myLayer, e);
+                cleanMarkers();
+                setPosition(e.latLng, map);
             }
         });
     };
@@ -39,72 +40,63 @@ var alerterModule = (function() {
     };
     
     function enableMap(map) {
-        // Enable drag and zoom handlers.
-        map.dragging.enable();
-        map.touchZoom.enable();
-        map.doubleClickZoom.enable();
-        map.scrollWheelZoom.enable();
-        map.keyboard.enable();
-
-        // Disable tap handler, if present.
-        if (map.tap) map.tap.enable();
+        map.setOptions({draggable: true, zoomControl: true, scrollwheel: true, disableDoubleClickZoom: false});
         map_enabled = true;
     };
     
     function disableMap(map) {
-        // Disable drag and zoom handlers.
-        map.dragging.disable();
-        map.touchZoom.disable();
-        map.doubleClickZoom.disable();
-        map.scrollWheelZoom.disable();
-        map.keyboard.disable();
-
-        // Disable tap handler, if present.
-        if (map.tap) map.tap.disable();
+        // Disable drag and zoom.
+        map.setOptions({draggable: false, zoomControl: false, scrollwheel: false, disableDoubleClickZoom: true});
         map_enabled = false;
     };
     
-    function initGeolocation(map, myLayer) {
-        if (!navigator.geolocation) {
-            $("geolocate-error-msg-container").innerHTML = "La géolocalisation n'est pas disponible.";
-        } else {
-            $("#obtenir-position-btn").click(function (e) {
-                e.preventDefault();
-                e.stopPropagation();
-                map.locate(); 
+    function initGeolocation(map) {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+              var pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+              };
+            
+              $("#obtenir-position-btn").click(function(e) {
+                    var latLng = new google.maps.LatLng(pos.lat, pos.lng);
+                    cleanMarkers();
+                    setPosition(latLng, map);
+                    map.setZoom(17);
+              });
+            }, function() {
+              handleLocationError(true, map.getCenter());
             });
-        }
-        
-        // Once we've got a position, zoom and center the map
-        // on it, and add a single marker.
-        map.on('locationfound', function(e) {
-            map.fitBounds(e.bounds);
-            setPosition(map, myLayer, e);
-        });
-
-        // If the user chooses not to allow their location
-        // to be shared, display an error message.
-        map.on('locationerror', function() {
-            $("geolocate-error-msg-container").innerHTML = "La position n'a pas pu être déterminée";
-        });
+          } else {
+            // Browser doesn't support Geolocation
+            handleLocationError(false, map.getCenter());
+          }
     };
     
-    function setPosition(map, myLayer, e) {
-        myLayer.setGeoJSON({
-            type: 'Feature',
-            geometry: {
-                type: 'Point',
-                coordinates: [e.latlng.lng, e.latlng.lat]
-            },
-            properties: {
-                'title': 'Ma position',
-                'marker-color': '#ff8888',
-                'marker-symbol': 'star'
-            }
+    function handleLocationError(browserHasGeolocation, pos) {
+      var infoWindow = new google.maps.InfoWindow({map: map});
+      infoWindow.setPosition(pos);
+      infoWindow.setContent(browserHasGeolocation ?
+                            'Erreur: La géolocalisation a échouée.' :
+                            'Erreur: Votre navigateur ne supporte pas la géolocalisation.');
+    };
+    
+    function setPosition(latLng, map) {
+       var marker = new google.maps.Marker({
+            position: latLng,
+            map: map
         });
-
-        $("#alert_longPos").val(e.latlng.lng);
-        $("#alert_latPos").val(e.latlng.lat);
+        $("#alert_latPos").val(latLng.lat);
+        $("#alert_longPos").val(latLng.lng);
+        markers.push(marker);
+        map.panTo(latLng);
+    };
+    
+    function cleanMarkers() {
+      for(var i = 0; i < markers.length; i++) {
+        markers[i].setMap(null);
+      }
+      markers = [];
     };
     
     return {
