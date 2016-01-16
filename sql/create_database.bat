@@ -1,4 +1,5 @@
-mysql -u root delete_database.sql app-urgence
-mysql -u root bdd.sql app-urgence
-mysql -u root insert-default-datas.sql app-urgence
+mysql -u root app-urgence < delete_database.sql
+mysql -u root app-urgence < bdd.sql
+mysql -u root app-urgence < insert-default-datas.sql
+
 pause

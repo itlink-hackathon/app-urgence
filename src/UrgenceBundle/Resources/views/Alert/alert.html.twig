@@ -8,59 +8,89 @@
 
 
         <div class="form-group">
-            {{ form_label(form.public_user.lastName, 'Nom de famille',{'label_attr': {'class': 'col-xs-3 control-label'}}) }}
-            <div class="col-xs-9">
+            {{ form_label(form.public_user.lastName, 'Nom de famille',{'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+            <div class="col-sm-9">
                 {{ form_widget(form.public_user.lastName, {'attr': {'class': 'form-control', 'placeholder':'Entrez votre nom de famille'}}) }}
             </div>
         </div>
 
         <div class="form-group">
-            {{ form_label(form.public_user.firstName, 'Prénom',{'label_attr': {'class': 'col-xs-3 control-label'}}) }}
-            <div class="col-xs-9">
+            {{ form_label(form.public_user.firstName, 'Prénom',{'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+            <div class="col-sm-9">
                 {{ form_widget(form.public_user.firstName, {'attr': {'class': 'form-control', 'placeholder':'Entrez votre prénom'}}) }}
             </div>
         </div>
 
         <div class="form-group">
-            {{ form_label(form.public_user.phone, 'Téléphone',{'label_attr': {'class': 'col-xs-3 control-label'}}) }}
-            <div class="col-xs-9">
+            {{ form_label(form.public_user.phone, 'Téléphone',{'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+            <div class="col-sm-9">
                 {{ form_widget(form.public_user.phone, {'attr': {'class': 'form-control', 'placeholder':'Entrez votre téléphone'}}) }}
             </div>
         </div>
 
         <div class="form-group">
-            {{ form_label(form.public_user.mail, 'Mail',{'label_attr': {'class': 'col-xs-3 control-label'}}) }}
-            <div class="col-xs-9">
+            {{ form_label(form.public_user.mail, 'E-mail',{'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+            <div class="col-sm-9">
                 {{ form_widget(form.public_user.mail, {'attr': {'class': 'form-control', 'placeholder':'Entrez votre email'}}) }}
             </div>
         </div>
 
         <div class="form-group">
-            {{ form_label(form.info, 'Informations complémentaires',{'label_attr': {'class': 'col-xs-3 control-label'}}) }}
-            <div class="col-xs-9">
+            {{ form_label(form.info, 'Informations complémentaires',{'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+            <div class="col-sm-9">
                 {{ form_widget(form.info, {'attr': {'class': 'form-control', 'placeholder':'Précisez votre situation'}}) }}
             </div>
         </div>
 
         <div class="form-group">
-            {{ form_label(form.alertType, "Type d'alerte",{'label_attr': {'class': 'col-xs-3 control-label'}}) }}
-            <div class="col-xs-9">
+            {{ form_label(form.alertType, "Type d'alerte",{'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+            <div class="col-sm-9">
                 {{ form_widget(form.alertType, {'attr': {'class': 'form-control', 'placeholder':''}}) }}
             </div>
         </div>
 
         <div class="form-group">
-            {{ form_label(form.severity, 'Sévérité',{'label_attr': {'class': 'col-xs-3 control-label'}}) }}
-            <div class="col-xs-9">
+            {{ form_label(form.severity, 'Sévérité',{'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+            <div class="col-sm-9">
                 {{ form_widget(form.severity, {'attr': {'class': 'form-control', 'placeholder':''}}) }}
             </div>
         </div>
 
+        {{ form_widget(form.longPos) }}
+        {{ form_widget(form.latPos) }}
+
         <div class="form-group">
-            {{ form_row(form.public_user.lastName) }}
+            <label class="control-label col-sm-3" for="position">Ma position</label>
+            <div class="col-sm-9">
+                <div class="container-fluid rounded-border padding-10">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="radio" style="display: inline-block;">
+                                <label>
+                                    <input id="obtenir-position-radio" type="radio" name="position-group"> Position GPS
+                                </label>
+                            </div>
+                            <button id="obtenir-position-btn" class="btn btn-default"><i class="fa fa-map-marker"></i> Obtenir</button>
+                            <div>
+                               <span id="geolocate-error-msg-container error-display"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="radio" style="display: inline-block;">
+                                <label>
+                                    <input id="map-position-btn" type="radio" name="position-group"> Indiquer une position sur la carte
+                                </label>
+                            </div>
+                            <div id="map-indiquer-position"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-    {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+    {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary straight'}}) }}
 
     {{ form_rest(form) }}
 
@@ -97,8 +127,10 @@
                   }
             });
         });
-
         
+        // A NE PAS ENLEVER !!!
+        var map = mapModule.init('map-indiquer-position');
+        alerterModule.init(map);
     });
 </script>
 
