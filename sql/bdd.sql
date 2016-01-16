@@ -29,18 +29,18 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `alert` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_parse` varchar(80) DEFAULT NULL,
-  `id_user` int(11) NOT NULL,
-  `id_alert_type` int(11) NOT NULL,
-  `id_severity` int(11) NOT NULL,
+  `public_user_id` int(11),
+  `alert_type_id` int(11) NOT NULL,
+  `severity_id` int(11) NOT NULL,
   `info` varchar(255) DEFAULT NULL,
   `lat_pos` float(10,6) NOT NULL,
   `long_pos` float(10,6) NOT NULL,
   `datetime_sent` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `datetime_received` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  KEY `id_alert_type` (`id_alert_type`),
-  KEY `id_severity` (`id_severity`),
-  KEY `id_user` (`id_user`)
+  KEY `alert_type_id` (`alert_type_id`),
+  KEY `severity_id` (`severity_id`),
+  KEY `public_user_id` (`public_user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -90,9 +90,9 @@ CREATE TABLE IF NOT EXISTS `severity` (
 -- Contraintes pour la table `alert`
 --
 ALTER TABLE `alert`
-  ADD CONSTRAINT `fk_user` FOREIGN KEY (`id_user`) REFERENCES `public_user` (`id`),
-  ADD CONSTRAINT `fk_severity` FOREIGN KEY (`id_severity`) REFERENCES `severity` (`id`),
-  ADD CONSTRAINT `fk_type` FOREIGN KEY (`id_alert_type`) REFERENCES `alert_type` (`id`);
+  ADD CONSTRAINT `fk_user` FOREIGN KEY (`public_user_id`) REFERENCES `public_user` (`id`),
+  ADD CONSTRAINT `fk_severity` FOREIGN KEY (`severity_id`) REFERENCES `severity` (`id`),
+  ADD CONSTRAINT `fk_type` FOREIGN KEY (`alert_type_id`) REFERENCES `alert_type` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
