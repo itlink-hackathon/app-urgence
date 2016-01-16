@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Sam 16 Janvier 2016 à 09:31
+-- Généré le :  Sam 16 Janvier 2016 à 10:44
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `alert` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_parse` varchar(80) DEFAULT NULL,
+  `id_user` int(11) NOT NULL,
   `id_alert_type` int(11) NOT NULL,
   `id_severity` int(11) NOT NULL,
   `info` varchar(255) DEFAULT NULL,
@@ -38,7 +39,10 @@ CREATE TABLE IF NOT EXISTS `alert` (
   `datetime_received` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `id_alert_type` (`id_alert_type`),
-  KEY `id_severity` (`id_severity`)
+  KEY `id_severity` (`id_severity`),
+  KEY `id_alert_type_2` (`id_alert_type`),
+  KEY `id_severity_2` (`id_severity`),
+  KEY `id_user` (`id_user`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -88,6 +92,7 @@ CREATE TABLE IF NOT EXISTS `severity` (
 -- Contraintes pour la table `alert`
 --
 ALTER TABLE `alert`
+  ADD CONSTRAINT `fk_user` FOREIGN KEY (`id_user`) REFERENCES `public_user` (`id`),
   ADD CONSTRAINT `fk_severity` FOREIGN KEY (`id_severity`) REFERENCES `severity` (`id`),
   ADD CONSTRAINT `fk_type` FOREIGN KEY (`id_alert_type`) REFERENCES `alert_type` (`id`);
 
