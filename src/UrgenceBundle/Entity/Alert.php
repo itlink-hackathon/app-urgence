@@ -248,32 +248,4 @@ class Alert
     {
         return $this->idSeverity;
     }
-    /**
-     * @var \UrgenceBundle\Entity\PublicUser
-     */
-    private $idUser;
-
-
-    /**
-     * Set idUser
-     *
-     * @param \UrgenceBundle\Entity\PublicUser $idUser
-     * @return Alert
-     */
-    public function setIdUser(\UrgenceBundle\Entity\PublicUser $idUser = null)
-    {
-        $this->idUser = $idUser;
-
-        return $this;
-    }
-
-    /**
-     * Get idUser
-     *
-     * @return \UrgenceBundle\Entity\PublicUser 
-     */
-    public function getIdUser()
-    {
-        return $this->idUser;
-    }
 }
