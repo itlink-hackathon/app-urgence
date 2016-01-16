@@ -30,6 +30,16 @@ class Alert
     private $longPos;
 
     /**
+     * @var \DateTime
+     */
+    private $datetimeSent;
+
+    /**
+     * @var \DateTime
+     */
+    private $datetimeReceived;
+
+    /**
      * @var integer
      */
     private $id;
@@ -135,6 +145,52 @@ class Alert
     public function getLongPos()
     {
         return $this->longPos;
+    }
+
+    /**
+     * Set datetimeSent
+     *
+     * @param \DateTime $datetimeSent
+     * @return Alert
+     */
+    public function setDatetimeSent($datetimeSent)
+    {
+        $this->datetimeSent = $datetimeSent;
+
+        return $this;
+    }
+
+    /**
+     * Get datetimeSent
+     *
+     * @return \DateTime 
+     */
+    public function getDatetimeSent()
+    {
+        return $this->datetimeSent;
+    }
+
+    /**
+     * Set datetimeReceived
+     *
+     * @param \DateTime $datetimeReceived
+     * @return Alert
+     */
+    public function setDatetimeReceived($datetimeReceived)
+    {
+        $this->datetimeReceived = $datetimeReceived;
+
+        return $this;
+    }
+
+    /**
+     * Get datetimeReceived
+     *
+     * @return \DateTime 
+     */
+    public function getDatetimeReceived()
+    {
+        return $this->datetimeReceived;
     }
 
     /**
