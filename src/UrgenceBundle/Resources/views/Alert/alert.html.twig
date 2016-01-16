@@ -56,6 +56,9 @@
             </div>
         </div>
 
+        {{ form_widget(form.longPos) }}
+        {{ form_widget(form.latPos) }}
+
         <div class="form-group">
             <label class="control-label col-sm-3" for="position">Ma position</label>
             <div class="col-sm-9">
@@ -68,13 +71,16 @@
                                 </label>
                             </div>
                             <button id="obtenir-position-btn" class="btn btn-default"><i class="fa fa-map-marker"></i> Obtenir</button>
+                            <div>
+                               <span id="geolocate-error-msg-container error-display"></span>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="radio" style="display: inline-block;">
                                 <label>
-                                    <input type="radio" name="position-group"> Indiquer une position sur la carte
+                                    <input id="map-position-btn" type="radio" name="position-group"> Indiquer une position sur la carte
                                 </label>
                             </div>
                             <div id="map-indiquer-position"></div>
@@ -121,8 +127,8 @@
         });
         
         // A NE PAS ENLEVER !!!
-        alerterModule.init();
-        mapModule.init('map-indiquer-position');
+        var map = mapModule.init('map-indiquer-position');
+        alerterModule.init(map);
     });
 </script>
 

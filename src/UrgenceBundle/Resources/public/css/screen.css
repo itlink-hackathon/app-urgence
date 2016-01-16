@@ -15,6 +15,10 @@ body,
     border-radius: 0;
 }
 
+.error-display {
+    color: #db1616;
+}
+
 /* * * * * Header * * * * */
 #page-header .navbar {
     margin-bottom: 0;
