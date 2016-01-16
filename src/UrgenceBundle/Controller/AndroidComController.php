@@ -57,8 +57,7 @@ class AndroidComController extends Controller
                
     private function validateNewAlert($data){
         $result = true;
-        
-        var_dump($data);
+
         // Check is json object is OK
         $result &= isset($data['timestamp_current']);
         $result &= isset($data['timestamp_position']);
