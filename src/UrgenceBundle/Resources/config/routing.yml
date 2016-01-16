@@ -1,3 +1,8 @@
 urgence_homepage:
     path:     /
     defaults: { _controller: UrgenceBundle:Default:index }
+
+urgence_ln:
+    path:     /form
+    defaults: { _controller: UrgenceBundle:Form:index }
+
