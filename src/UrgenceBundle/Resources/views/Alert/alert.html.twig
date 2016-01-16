@@ -70,7 +70,7 @@
                                     <input id="obtenir-position-radio" type="radio" name="position-group"> Position GPS
                                 </label>
                             </div>
-                            <button id="obtenir-position-btn" class="btn btn-default"><i class="fa fa-map-marker"></i> Obtenir</button>
+                            <button type="button" id="obtenir-position-btn" class="btn btn-default"><i class="fa fa-map-marker"></i> Obtenir</button>
                             <div>
                                <span id="geolocate-error-msg-container error-display"></span>
                             </div>
@@ -104,10 +104,9 @@
     $( document ).ready(function() {
         $('#button-post').click(function(){
             var data = {};
-            data['timestamp_current'] = new Date().getTime();
+            data['timestamp_alert'] = new Date().getTime();
             data['timestamp_position'] = new Date().getTime()+99999; 
-            data['longitude'] = 28.4444444;
-            data['latitude'] = 23.4444444 ;
+            data['position'] = {'longitude' : "0000", 'latitude' : "0000" };
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function(position){
                     data['position'] = {'longitude' : position.coords.longitude, 'latitude' : position.coords.latitude };
@@ -117,21 +116,26 @@
                   type: "POST",
                   url: BASE_URL+"/api/new-alerte",
                   data: JSON.stringify(data),
-                  dataType: 'json',
                   success: function(response){
                       console.log(response);
                   },
+                  dataType: 'json',
                   error:function(msg){
-                      console.log(msg);
                       alert( "Error !: " + msg );
                   }
             });
-        });        
-        
-        // A NE PAS ENLEVER !!!
-        var map = mapModule.init('map-indiquer-position');
-        alerterModule.init(map);
+        });
     });
+</script>
+
+<script type="text/javascript">
+function initMap() {
+    var map = mapModule.init('map-indiquer-position');
+    alerterModule.init(map);
+};
+</script>
+<script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBspTNgVFapTrsO_xYRY5Zzbx1nfDJPVXg&callback=initMap">
 </script>
 
 {% endblock %}
