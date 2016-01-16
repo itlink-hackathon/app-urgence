@@ -38,14 +38,14 @@ class Alert
     /**
      * @var float
      *
-     * @ORM\Column(name="lat_pos", type="float", precision=10, scale=6)
+     * @ORM\Column(name="lat_pos", type="float", precision=10, scale=6, nullable=true)
      */
     private $latPos;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="long_pos", type="float", precision=10, scale=6)
+     * @ORM\Column(name="long_pos", type="float", precision=10, scale=6, nullable=true)
      */
     private $longPos;
 

@@ -13,3 +13,7 @@ urgence_alertsecours:
 urgence_voiralertes:
     path:     /voir-alertes
     defaults: { _controller: UrgenceBundle:Alert:voiralertes }
+
+urgence_testInsert:
+    path:     /form/insert
+    defaults: { _controller: UrgenceBundle:Form:insert }
