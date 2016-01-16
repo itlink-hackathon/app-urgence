@@ -1,3 +1,11 @@
 urgence_homepage:
     path:     /
     defaults: { _controller: UrgenceBundle:Default:index }
+    
+urgence_alertsecours:
+    path:     /alerter-secours
+    defaults: { _controller: UrgenceBundle:Alert:alert }
+    
+urgence_voiralertes:
+    path:     /voir-alertes
+    defaults: { _controller: UrgenceBundle:Default:voiralertes }
