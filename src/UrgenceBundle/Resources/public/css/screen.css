@@ -11,6 +11,10 @@ body,
     padding: 10px;
 }
 
+.btn.straight {
+    border-radius: 0;
+}
+
 /* * * * * Header * * * * */
 #page-header .navbar {
     margin-bottom: 0;
@@ -123,21 +127,18 @@ ol.breadcrumb {
     border-radius: 3px;
 }
 
+form {
+    margin-bottom: 10px;
+}
+
 /* * * * * Map * * * * */
-#map {
+#map-voir-alertes {
     height: 500px;
     margin-bottom: 20px;
 }
 
-#coordinates-div {
-    background:#fff;
-    position:absolute;
-    top:0px;
-    right:10px;
-    padding:3px;
-    z-index:100;
-    border-radius:3px;
-    font-size: 10px;
+#map-indiquer-position {
+    height: 300px;
 }
 
 /* * * * * Footer * * * * */
