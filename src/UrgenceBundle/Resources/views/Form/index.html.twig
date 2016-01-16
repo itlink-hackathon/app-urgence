@@ -1,8 +1,12 @@
-{% extends 'UrgenceBundle::layout.html.twig' %}
+{% extends "::base.html.twig" %}
 
-{% block title %}Alerter les secours{% endblock %}
+{% block title %}UrgenceBundle:Form:index{% endblock %}
 
-{% block content %}
+{% block body %}
+    <div class="container">
+        <h1>Formulaire de signalement</h1>
+        <p>Signalez un incident directement sur ce site en remplissant le formulaire : </p>
+
         {{ form_start(form, {'attr' : {'class': 'form-horizontal'}}) }}
 
 
@@ -39,6 +43,7 @@
     {{ form_rest(form) }}
 
     {{ form_end(form) }}
-
+        </div>
+    </div>
 
 {% endblock %}

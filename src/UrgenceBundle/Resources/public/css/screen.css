@@ -1,6 +1,6 @@
 body,
 #page-wrapper {
-    background: #f0f0f0;
+    background: #f7f7f7;
 }
 
 #page-content {
@@ -41,25 +41,19 @@ body,
 }
 
 #page-header .navbar-nav > li > a:hover {
-    color: #db1616;
-    text-decoration: underline;
+    color: #fff;
+    border-bottom: 3px solid #fff;
 }
 
-#page-header .navbar-nav > li.active > a,
-#page-header .navbar-nav > li > a:active,
-#page-header .navbar-nav > li > a:focus {
-    background: #fff;
-    color: #db1616;
-    text-decoration: underline;
-}
-
-#page-header .hvr-sweep-to-top:before {
-    background: #fff;
+#page-header .navbar-nav > li.active > a {
+    background: #db1616;
+    border-bottom: 3px solid #fff;
 }
 
 #page-header [type="submit"]:hover {
-    color: #7c7c7c;
+    color: #333;
     background: #fff;
+    text-decoration: underline;
 }
 
 #page-content hr {
@@ -88,12 +82,7 @@ body,
 
 /* * * * * Breadcrumb * * * * */
 #page-breadcrumb {
-    background: #f0f0f0;
     padding-top: 20px;
-}
-
-ol.breadcrumb {
-    background: transparent;
 }
 
 .rounded-border {
