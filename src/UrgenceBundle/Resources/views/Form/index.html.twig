@@ -5,16 +5,38 @@
 {% block content %}
         {{ form_start(form, {'attr' : {'class': 'form-horizontal'}}) }}
 
-        <div class="alert alert-danger">
-            {{ form_errors(form) }}
-        </div>
 
         <div class="form-group">
-            {{ form_label(form.last_name, 'Nom de famille',{'label_attr': {'class': 'col-xs-3 control-label'}}) }}
+            {{ form_label(form.last_name, 'Nom',{'label_attr': {'class': 'col-xs-3 control-label'}}) }}
             <div class="col-xs-9">
-                {{ form_widget(form.last_name, {'attr': {'class': 'form-control'}}) }}
+                {{ form_widget(form.last_name, {'attr': {'class': 'form-control', 'placeholder':'Entrez votre nom...'}}) }}
             </div>
         </div>
+
+    <div class="form-group">
+        {{ form_label(form.first_name, 'Prénom',{'label_attr': {'class': 'col-xs-3 control-label'}}) }}
+        <div class="col-xs-9">
+            {{ form_widget(form.first_name, {'attr': {'class': 'form-control', 'placeholder':'Entrez votre prénom...'}}) }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.phone, 'Téléphone',{'label_attr': {'class': 'col-xs-3 control-label'}}) }}
+        <div class="col-xs-9">
+            {{ form_widget(form.phone, {'attr': {'class': 'form-control', 'placeholder':'Entrez votre téléphone...'}}) }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.mail, 'E-mail',{'label_attr': {'class': 'col-xs-3 control-label'}}) }}
+        <div class="col-xs-9">
+            {{ form_widget(form.mail, {'attr': {'class': 'form-control', 'placeholder':'Entrez votre email...'}}) }}
+        </div>
+    </div>
+
+    {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+
+    {{ form_rest(form) }}
 
     {{ form_end(form) }}
 
