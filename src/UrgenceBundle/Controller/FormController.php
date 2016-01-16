@@ -55,7 +55,7 @@ class FormController extends Controller
 
             return $this->render('@Urgence/Form/result.html.twig');
         }
-        return $this->render('@Urgence/Form/index.html.twig',array(
+        return $this->render('@Urgence/Alert/alert.html.twig',array(
             'form' => $form->createView()
         ));
 
