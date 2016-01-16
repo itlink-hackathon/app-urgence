@@ -62,6 +62,27 @@ body,
     background: #fff;
 }
 
+#page-header .navbar-toggle {
+    color: #fff;
+    border-color: #fff;
+}
+
+#page-header .navbar-toggle .icon-bar {
+    background-color: #fff;
+}
+
+#page-header .navbar-toggle:hover,
+#page-header .navbar-toggle:active,
+#page-header .navbar-toggle:focus {
+    background: #fff;
+}
+
+#page-header .navbar-toggle:hover .icon-bar,
+#page-header .navbar-toggle:active .icon-bar,
+#page-header .navbar-toggle:focus .icon-bar {
+    background-color: #db1616;
+}
+
 #page-content hr {
     margin-top: 10px;
     margin-bottom: 10px;

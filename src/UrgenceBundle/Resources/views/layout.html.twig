@@ -19,6 +19,10 @@
             <script type="text/javascript" src="{{ asset('bundles/urgence/js/bootstrap.min.js') }}"></script>
             <script type="text/javascript" src="{{ asset('bundles/urgence/js/mapbox.js') }}"></script>
             <script type="text/javascript" src="{{ asset('bundles/urgence/js/mapModule.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('bundles/urgence/js/commonModule.js') }}"></script>
+            <script type="text/javascript">
+                commonModule.init(); 
+            </script>
 		{% endblock %}
 		<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 	</head>
