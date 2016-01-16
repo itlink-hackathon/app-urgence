@@ -82,10 +82,9 @@
                     data['position'] = {'longitude' : position.coords.longitude, 'latitude' : position.coords.latitude };
                 });
             }
-            
             $.ajax({
                   type: "POST",
-                  url: "/hackathon-2016/app_dev.php/api/new-alerte",
+                  url: BASE_URL+"/api/new-alerte",
                   data: JSON.stringify(data),
                   success: function(response){
                       console.log(response);
