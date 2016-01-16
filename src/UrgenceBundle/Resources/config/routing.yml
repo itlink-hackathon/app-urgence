@@ -10,6 +10,10 @@ urgence_voiralertes:
     path:     /voir-alertes
     defaults: { _controller: UrgenceBundle:Alert:voiralertes }
 
+urgence_new_alert:
+    path:     /api/new-alerte
+    defaults: { _controller: UrgenceBundle:AndroidCom:newAlert }
+
 urgence_testInsert:
     path:     /form/insert
     defaults: { _controller: UrgenceBundle:Form:insert }

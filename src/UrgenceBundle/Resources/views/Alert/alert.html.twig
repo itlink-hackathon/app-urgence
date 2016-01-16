@@ -56,7 +56,6 @@
             </div>
         </div>
 
-
         <div class="form-group">
             {{ form_row(form.public_user.lastName) }}
         </div>
@@ -66,5 +65,40 @@
     {{ form_rest(form) }}
 
     {{ form_end(form) }}
+
+    </div>
+</form>
+
+<button id="button-post" class="btn btn-default">Click Send Post test (TO REMOVE) </button>
+<script type="text/javascript">
+    $( document ).ready(function() {
+        $('#button-post').click(function(){
+            var data = {};
+            data['timestamp_alert'] = new Date().getTime();
+            data['timestamp_position'] = new Date().getTime()+99999; 
+            data['position'] = {'longitude' : "0000", 'latitude' : "0000" };
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position){
+                    data['position'] = {'longitude' : position.coords.longitude, 'latitude' : position.coords.latitude };
+                });
+            }
+            
+            $.ajax({
+                  type: "POST",
+                  url: "/hackathon-2016/app_dev.php/api/new-alerte",
+                  data: JSON.stringify(data),
+                  success: function(response){
+                      console.log(response);
+                  },
+                  dataType: 'json',
+                  error:function(msg){
+                      alert( "Error !: " + msg );
+                  }
+            });
+        });
+
+        
+    });
+</script>
 
 {% endblock %}
