@@ -4,31 +4,57 @@ namespace UrgenceBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use UrgenceBundle\Entity\PublicUser;
+use UrgenceBundle\Entity\Alert;
+use UrgenceBundle\Entity\Severity;
+use UrgenceBundle\Form\AlertType;
+use Symfony\Component\HttpFoundation\Session\Session;
+
 
 class FormController extends Controller
 {
+
     /**
-     * @Route("/add")
+     * Basic route for testing adding information into the database
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function addAction()
+    public function insertAction(Request $request)
     {
+        $alert = new Alert();
+        $severity = new Severity();
+        $severity->setName("name1");
+        $alerttype = new \UrgenceBundle\Entity\AlertType();
+        $alerttype->setName('name2');
+        $alert->setInfo("Info");
+        $alert->setDatetimeReceived(new \DateTime());
+        $alert->setDatetimeSent(new \DateTime());
+        $alert->setIdParse('idParse');
+        $alert->setLatPos("46.891296");
+        $alert->setLongPos("-0.930691");
+        $alert->setSeverity($severity);
+        $alert->setAlertType($alerttype);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($alert);
+        $em->flush();
         return $this->render('UrgenceBundle:Form:add.html.twig', array(
-            // ...
         ));
     }
 
 
     public function indexAction(Request $request)
     {
-        $public_user = new PublicUser();
+        $alert = new Alert();
 
-        $formBuilder = $this->get('form.factory')->createBuilder('form',$public_user);
+        $form = $this->get('form.factory')->create(new AlertType(), $alert);
 
-        $formBuilder->add('last_name','text')->add('first_name')->add('phone','text')->add('mail','email')->add('save','submit');
-        $form = $formBuilder->getForm();
+        if ($form->handleRequest($request)->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($alert);
+            $em->flush();
+
+            return $this->render('@Urgence/Form/result.html.twig');
+        }
         return $this->render('@Urgence/Form/index.html.twig',array(
             'form' => $form->createView()
         ));
