@@ -16,9 +16,6 @@ var alerterModule = (function() {
         
         map.on('click', function(e) {
             if (map_enabled) {
-                if (myLayer.length >= 1) {
-                    myLayer.
-                }
                 map.panTo(e.latlng);
                 setPosition(map, myLayer, e);
             }
