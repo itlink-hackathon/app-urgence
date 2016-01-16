@@ -6,9 +6,9 @@
 		{# On mobile device, screen is resized  #}
 		<meta name="viewport" content="width=device-width"/>
 		{% block stylesheets %}
-			<link rel="stylesheet" type="text/css" media="screen"  href="{{ 'bundles/bmatznerjqueryui/css/smoothness/jquery-ui.css' }}" />
-            <link rel="stylesheet" type="text/css" media="screen"  href="{{ 'bundles/bmatznerjqueryui/css/smoothness/jquery.ui.theme.css' }}" />
 			<link rel="stylesheet" type="text/css" media="screen"  href="{{ 'bundles/urgence/css/screen.css' }}" />
+            <link rel="stylesheet" type="text/css" media="screen"  href="{{ 'bundles/urgence/css/bootstrap.min.css' }}" />
+            <link rel="stylesheet" type="text/css" media="screen"  href="{{ 'bundles/urgence/css/font-awesome.min.css' }}" />
 		{% endblock %}
 		<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 	</head>
@@ -19,11 +19,17 @@
 			<div id="page-wrapper">
 			
 				{# breadcrumbs #}
-				<div class="breadcrumb"></div>
+				<div class="page-breadcrumb">
+                    <ol class="breadcrumb">
+                      <li><a href="#">Accueil</a></li>
+                      <li class="active">Alerter les secours</li>
+                    </ol>
+                </div>
 				
 				{# content #}
-				<div id="page-content">
+				<div id="page-content" class="container">
 					<h1>{{ block('title') }}</h1>
+                    <hr>
 					{% for flashMessage in app.session.flashbag.get('info') %}
 					    <div class="info">
 					        {{ flashMessage }}
@@ -55,16 +61,14 @@
 				
 				{# footer #}
 				<div id="page-footer">
-					<div class="links">
-						<a>Version Hackathon 2016</a>
-					</div>
+                    <p>Urgence - Hackathon Nec Mergitur - Paris - 2016</p>
 				</div>
 			</div>
 		
         {% block javascripts %}
 		    <script type="text/javascript">BASE_URL = "{{ app.request.baseUrl }}";</script>			      
-			<script type="text/javascript" src="{{ 'bundles/bmatznerjquery/js/jquery.min.js' }}"></script>
-			<script type="text/javascript" src="{{ 'bundles/bmatznerjqueryui/js/minified/jquery-ui.min.js' }}"></script>
+			<script type="text/javascript" src="{{ 'bundles/urgence/js/jquery-1.12.0.min.js' }}"></script>
+            <script type="text/javascript" src="{{ 'bundles/urgence/js/bootstrap.min.js' }}"></script>
 		{% endblock %}
 	</body>
 </html>
