@@ -101,6 +101,12 @@ ol.breadcrumb {
     border-radius: 3px;
 }
 
+/* * * * * Map * * * * */
+#map {
+    height: 400px;
+    margin-bottom: 20px;
+}
+
 /* * * * * Footer * * * * */
 #page-footer {
     margin-top: 20px;
