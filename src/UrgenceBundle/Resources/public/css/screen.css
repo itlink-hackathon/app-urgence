@@ -94,6 +94,7 @@ body,
 
 ol.breadcrumb {
     background: transparent;
+    margin-bottom: 10px;
 }
 
 .rounded-border {
@@ -103,7 +104,19 @@ ol.breadcrumb {
 
 /* * * * * Map * * * * */
 #map {
-    height: 450px;
+    height: 500px;
+    margin-bottom: 20px;
+}
+
+#coordinates-div {
+    background:#fff;
+    position:absolute;
+    top:0px;
+    right:10px;
+    padding:3px;
+    z-index:100;
+    border-radius:3px;
+    font-size: 10px;
 }
 
 /* * * * * Footer * * * * */
