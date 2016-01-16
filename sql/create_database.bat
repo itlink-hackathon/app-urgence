@@ -1,3 +1,3 @@
-mysql -u root delete_database.sql app-urgence
-mysql -u root bdd.sql app-urgence
+mysql -u root app-urgence < delete_database.sql
+mysql -u root app-urgence < bdd.sql
 pause
