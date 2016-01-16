@@ -5,4 +5,11 @@ urgence_homepage:
 urgence_ln: 
     path:     /form
     defaults: { _controller: UrgenceBundle:Form:index }
-
+    
+urgence_alertsecours:
+    path:     /alerter-secours
+    defaults: { _controller: UrgenceBundle:Alert:alert }
+    
+urgence_voiralertes:
+    path:     /voir-alertes
+    defaults: { _controller: UrgenceBundle:Alert:voiralertes }
