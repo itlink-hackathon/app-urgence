@@ -63,6 +63,20 @@ class Alert
      */
     private $datetimeReceived;
 
+    /**
+     * @ORM\OneToOne(targetEntity="UrgenceBundle\Entity\AlertType", cascade={"persist"})
+     */
+    private $alertType;
+
+    /**
+     * @ORM\OneToOne(targetEntity="UrgenceBundle\Entity\Severity", cascade={"persist"})
+     */
+    private $severity;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="UrgenceBundle\Entity\PublicUser", cascade={"persist"})
+     */
+    private $public_user;
 
     /**
      * Get id
@@ -210,5 +224,74 @@ class Alert
     public function getDatetimeReceived()
     {
         return $this->datetimeReceived;
+    }
+
+    /**
+     * Set alertType
+     *
+     * @param \UrgenceBundle\Entity\AlertType $alertType
+     * @return Alert
+     */
+    public function setAlertType(\UrgenceBundle\Entity\AlertType $alertType = null)
+    {
+        $this->alertType = $alertType;
+
+        return $this;
+    }
+
+    /**
+     * Get alertType
+     *
+     * @return \UrgenceBundle\Entity\AlertType 
+     */
+    public function getAlertType()
+    {
+        return $this->alertType;
+    }
+
+    /**
+     * Set severity
+     *
+     * @param \UrgenceBundle\Entity\Severity $severity
+     * @return Alert
+     */
+    public function setSeverity(\UrgenceBundle\Entity\Severity $severity = null)
+    {
+        $this->severity = $severity;
+
+        return $this;
+    }
+
+    /**
+     * Get severity
+     *
+     * @return \UrgenceBundle\Entity\Severity 
+     */
+    public function getSeverity()
+    {
+        return $this->severity;
+    }
+
+    /**
+     * Set public_user
+     *
+     * @param \UrgenceBundle\Entity\PublicUser $publicUser
+     * @return Alert
+     */
+    public function setPublicUser(\UrgenceBundle\Entity\PublicUser $publicUser = null)
+    {
+        $this->public_user = $publicUser;
+
+        return $this;
+    }
+
+    /**
+     * Get public_user
+     *
+     * @return \UrgenceBundle\Entity\PublicUser 
+     */
+    public function getPublicUser()
+    {
+        return $this->public_user;
     }
 }

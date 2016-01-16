@@ -6,7 +6,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use UrgenceBundle\Entity\Alert;
 use UrgenceBundle\Entity\PublicUser;
+use UrgenceBundle\Form\AlertType;
 
 class FormController extends Controller
 {
@@ -23,12 +25,11 @@ class FormController extends Controller
 
     public function indexAction(Request $request)
     {
-        $public_user = new PublicUser();
+        $alert = new Alert();
 
-        $formBuilder = $this->get('form.factory')->createBuilder('form',$public_user);
+        $form = $this->get('form.factory')->create(new AlertType(), $alert);
 
-        $formBuilder->add('last_name','text')->add('first_name')->add('phone','text')->add('mail','email')->add('save','submit');
-        $form = $formBuilder->getForm();
+
         return $this->render('@Urgence/Form/index.html.twig',array(
             'form' => $form->createView()
         ));
