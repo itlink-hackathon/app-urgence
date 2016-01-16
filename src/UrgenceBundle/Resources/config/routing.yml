@@ -13,3 +13,7 @@ urgence_alertsecours:
 urgence_voiralertes:
     path:     /voir-alertes
     defaults: { _controller: UrgenceBundle:Alert:voiralertes }
+        
+urgence_new_alert:
+    path:     /api/new-alerte
+    defaults: { _controller: UrgenceBundle:AndroidCom:newAlert }
