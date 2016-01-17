@@ -108,6 +108,7 @@
 <script type="text/javascript">
 function initMap() {
   var map = mapModule.init('map-voir-alertes');
+  mapModule.loadData(map);
   setInterval(function() { mapModule.loadData(map); }, 2000);
 };
 </script>
