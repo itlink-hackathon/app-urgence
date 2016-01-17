@@ -49,7 +49,20 @@ class PublicUser
      */
     private $mail;
 
-
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="genre", type="string", length=50, nullable=true)
+     */
+    private $genre;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="age", type="integer", nullable=true)
+     */
+    private $age;
+    
     /**
      * Get id
      *
@@ -150,5 +163,52 @@ class PublicUser
     public function getMail()
     {
         return $this->mail;
+    }
+    
+    
+    /**
+     * Set genre
+     *
+     * @param string $genre
+     * @return PublicUser
+     */
+    public function setGenre($genre)
+    {
+        $this->genre = $genre;
+
+        return $this;
+    }
+
+    /**
+     * Get genre
+     *
+     * @return string 
+     */
+    public function getGenre()
+    {
+        return $this->genre;
+    }
+    
+    /**
+     * Set age
+     *
+     * @param integer $age
+     * @return PublicUser
+     */
+    public function setAge($age)
+    {
+        $this->age = $age;
+
+        return $this;
+    }
+
+    /**
+     * Get genre
+     *
+     * @return integer 
+     */
+    public function getAge()
+    {
+        return $this->age;
     }
 }
