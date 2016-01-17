@@ -146,6 +146,10 @@ form {
     padding-right: 20px;
 }
 
+.cards-container .collapse-card p {
+    padding: 0;
+}
+
 .cards-container .collapse-card {
     padding: 0;
 }
@@ -161,6 +165,11 @@ form {
 
 .cards-container .collapse-card.red .title {
     background: #db1616;
+    color: #fff;
+}
+
+.cards-container .collapse-card.yellow .title {
+    background: #ebd263;
     color: #fff;
 }
 
