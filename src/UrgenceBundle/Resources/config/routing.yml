@@ -17,3 +17,7 @@ urgence_new_alert:
 urgence_testInsert:
     path:     /form/insert
     defaults: { _controller: UrgenceBundle:Form:insert }
+
+urgence_allalerts:
+    path:     /all-alerts
+    defaults: { _controller: UrgenceBundle:Alert:allAlerts }
