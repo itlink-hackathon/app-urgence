@@ -5,15 +5,16 @@ var alerterModule = (function() {
     
     function init(map) {
         markers = [];
-        enableDisableObtenirPositionBtn();
-        disableMap(map);
+        var geolocationActive = initGeolocation(map);
+        
+        if (!geolocationActive) {
+            enableDisableUIControls(map);
+        }
         
         $("input[type=radio][name=position-group]").change(function() {
            enableDisableObtenirPositionBtn();
            enableDisableMap(map);
         });
-        
-        initGeolocation(map);
         
         map.addListener('click', function(e) {
             if (map_enabled) {
@@ -58,19 +59,29 @@ var alerterModule = (function() {
                 lng: position.coords.longitude
               };
             
+              geolocate(map, pos);
+              $("#obtenir-position-radio").prop("checked", true);
+              enableDisableUIControls(map);
               $("#obtenir-position-btn").click(function(e) {
-                    var latLng = new google.maps.LatLng(pos.lat, pos.lng);
-                    cleanMarkers();
-                    setPosition(latLng, map);
-                    map.setZoom(17);
+                    initGeolocation(map);
               });
+              return true;
             }, function() {
               handleLocationError(true, map.getCenter());
+              return false;
             });
           } else {
             // Browser doesn't support Geolocation
             handleLocationError(false, map.getCenter());
+            return false;
           }
+    };
+    
+    function geolocate(map, pos) {
+        var latLng = new google.maps.LatLng(pos.lat, pos.lng);
+        cleanMarkers();
+        setPosition(latLng, map);
+        map.setZoom(17);
     };
     
     function handleLocationError(browserHasGeolocation, pos) {
@@ -97,6 +108,11 @@ var alerterModule = (function() {
         markers[i].setMap(null);
       }
       markers = [];
+    };
+    
+    function enableDisableUIControls(map) {
+        enableDisableObtenirPositionBtn();
+        enableDisableMap(map);
     };
     
     return {
