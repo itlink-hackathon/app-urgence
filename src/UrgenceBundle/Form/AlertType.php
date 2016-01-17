@@ -20,11 +20,11 @@ class AlertType extends AbstractType
             ->add('info', 'textarea')
             ->add('latPos', 'hidden')
             ->add('longPos', 'hidden')
-            ->add('alertType', EntityType::class, array(
+            ->add('alertType', 'Symfony\Bridge\Doctrine\Form\Type\EntityType', array(
                 'class' => 'UrgenceBundle\Entity\AlertType',
                 'choice_label' => 'name'
             ))
-            ->add('severity', EntityType::class, array(
+            ->add('severity', 'Symfony\Bridge\Doctrine\Form\Type\EntityType', array(
                 'class' => 'UrgenceBundle\Entity\Severity',
                 'choice_label' => 'name'
             ))
