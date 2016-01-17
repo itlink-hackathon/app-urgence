@@ -62,8 +62,9 @@
 
 <div class="col-md-7">
         <div class="form-group">
-            <div class="col-xs-12">
-                <div class="container-fluid rounded-border padding-10">
+            <div class="container-fluid rounded-border padding-10">
+            <div class="row">
+            <div class="col-xs-12 col-md-8">
                     <label class="control-label" for="position" style="padding-top: 0;">Ma position</label>
                     <div class="row">
                         <div class="col-xs-12">
@@ -85,10 +86,16 @@
                                     <input id="map-position-btn" type="radio" name="position-group"> Indiquer une position sur la carte
                                 </label>
                             </div>
-                            <div id="map-indiquer-position"></div>
                         </div>
                     </div>
+            </div>
+                <div class="col-xs-12 col-md-4">
+                   <p id="adresse-container">ksqjdlqdjlqjdlsqj<br>lsqkdlqkdlsqk sldkslqkdslqkd<br>35000 Rennes</p>
                 </div>
+            </div>
+            <div class="row">
+                <div id="map-indiquer-position"></div>
+            </div>
             </div>
         </div>
 </div>
@@ -101,37 +108,6 @@
 
     </div>
 </form>
-
-<button id="button-post" class="btn btn-default">Click Send Post test (TO REMOVE) </button>
-<script type="text/javascript">
-    $( document ).ready(function() {
-        $('#button-post').click(function(){
-            var data = {};
-            data['timestamp_current'] = new Date().getTime();
-            data['timestamp_position'] = new Date().getTime()+99999; 
-            data['longitude'] = 34.343434;
-            data['latitude'] = 56.565667;
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function(position){
-                    data['longitude'] = position.coords.longitude;
-                    data['latitude'] = position.coords.latitude;
-                });
-            }
-            $.ajax({
-                  type: "POST",
-                  url: BASE_URL+"/api/new-alerte",
-                  data: JSON.stringify(data),
-                  success: function(response){
-                      console.log(response);
-                  },
-                  dataType: 'json',
-                  error:function(msg){
-                      alert( "Error !: " + msg );
-                  }
-            });
-        });
-    });
-</script>
 
 <script type="text/javascript">
 function initMap() {

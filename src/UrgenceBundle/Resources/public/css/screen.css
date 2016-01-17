@@ -186,6 +186,13 @@ form {
     min-height: 0;
 }
 
+div .container{
+    padding: 20px;
+}
+span .paragraph{
+
+}
+
 /* * * * * Map * * * * */
 #map-voir-alertes {
     height: 500px;

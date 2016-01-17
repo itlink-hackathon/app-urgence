@@ -51,4 +51,23 @@ class AlertController extends Controller
         return new JsonResponse($geojson);
     }
     
+    public function clearDatasAction()
+    {
+        
+        $em = $this->getDoctrine()->getManager();
+        $alerts = $this->getDoctrine()->getRepository('UrgenceBundle:Alert')->findAll();
+        $users = $this->getDoctrine()->getRepository('UrgenceBundle:PublicUser')->findAll();
+        
+        foreach($alerts as $alert){
+            $em->remove($alert);
+            $em->flush();
+        }
+        
+        foreach($users as $user){
+            $em->remove($user);
+            $em->flush();
+        }
+        
+        return new JsonResponse(array('success' => true));
+    }
 }
