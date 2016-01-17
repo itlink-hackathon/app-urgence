@@ -1,29 +1,20 @@
 {% extends 'UrgenceBundle::layout.html.twig' %}
 
-{% block title %}Accueil{% endblock %}
+{% block title %}Yourgence&trade; : alertez en 1 geste{% endblock %}
 
 {% block content %}
-<div>
-    <span></span>
+
+<div class="container col-md-12">
+    <span class="paragraph">YOURGENCE&trade; s’adresse à tous les citoyens et aux services d’urgence.</span><br/><br/>
+
+<span class="paragraph">YOURGENCE&trade; protège tous les citoyens au quotidien (à la maison, au travail, dans les transports en commun, en pratiquant une activité sportive, en assistant à un spectacle, …), en transformant instantanément et en 1 geste votre mobile en boite noire d'urgence.</span><br/><br/>
+
+<span class="paragraph">YOURGENCE&trade; offre aux services d’urgence un système de collecte et de traitement des données transmises par tous les citoyens ou obtenues à distance par les Autorités en cas de crise : chaque mobile de citoyen devient une sources de données..</span><br/><br/>
+
+<span class="paragraph">YOURGENCE&trade; est actuellement disponible pour tests sur le <a href="https://play.google.com/apps/testing/com.ipsis.teouapps.app01" >PlayStore</a> ou en <a href="http://yourgence.co.nr/alerter-secours">site web</a>.</span><br/><br/>
+
+<span class="paragraph">Pour toute demande d’informations complémentaires, nous contacter à <a href="mailto:yourgence@itlink.fr">yourgence@itlink.fr</a></span><br/><br/>
+
 </div>
-<div>
-    <button id="button-reset" class="btn btn-default">Click to clear datas</button>
-    <script type="text/javascript">
-        $( document ).ready(function() {
-            $('#button-reset').click(function(){
-                $.ajax({
-                      type: "GET",
-                      url: BASE_URL+"/clear-datas",
-                      success: function(response){
-                          console.log(response);
-                      },
-                      dataType: 'json',
-                      error:function(msg){
-                          alert( "Error !: " + msg );
-                      }
-                });
-            });
-        });
-    </script>
-</div>
+
 {% endblock %}
