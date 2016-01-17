@@ -38,7 +38,7 @@ class AndroidComController extends Controller
                 $newUserToAdd->setFirstName($data['firstname']);
                 $newUserToAdd->setLastName($data['lastname']);        
                 $newUserToAdd->setPhone($data['phone_number']);
-                $newUserToAdd->setGenre($data['genre']);
+                $newUserToAdd->setGenre($data['gender']);
                 
                 if(is_integer(intval($data['age']))){
                     $newUserToAdd->setAge(intval($data['age']));
@@ -88,7 +88,7 @@ class AndroidComController extends Controller
         $result &= isset($data['lastname']);        
         $result &= isset($data['phone_number']);    
         $result &= isset($data['drive_link']);     
-        $result &= isset($data['genre']);    
+        $result &= isset($data['gender']);    
         $result &= isset($data['age']);
         
         // Check not null datas
@@ -100,7 +100,7 @@ class AndroidComController extends Controller
         $result &= $data['lastname']!=null;        
         $result &= $data['phone_number']!=null;    
         $result &= $data['drive_link']!=null;        
-        $result &= $data['genre']!=null;    
+        $result &= $data['gender']!=null;    
         $result &= $data['age']!=null;
         
         return $result;
