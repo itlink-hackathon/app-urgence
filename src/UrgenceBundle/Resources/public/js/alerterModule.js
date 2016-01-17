@@ -100,6 +100,7 @@ var alerterModule = (function() {
         $("#alert_latPos").val(latLng.lat);
         $("#alert_longPos").val(latLng.lng);
         markers.push(marker);
+        loadDoc(latLng.lat(), latLng.lng());
         map.panTo(latLng);
     };
     
@@ -114,6 +115,23 @@ var alerterModule = (function() {
         enableDisableObtenirPositionBtn();
         enableDisableMap(map);
     };
+
+    function loadDoc(lat, lng) {
+        console.log(lat);
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (xhttp.readyState == 4 && xhttp.status == 200) {
+                //document.getElementById("demo").innerHTML = xhttp.responseText;
+                var response = JSON.parse(xhttp.responseText);
+                console.log(response["results"]);
+                if(response["status"] == "OK") {
+                    document.getElementById("adresse-container").innerHTML = response["results"][0]["formatted_address"];
+                }
+            }
+        };
+        xhttp.open("GET", "https://maps.googleapis.com/maps/api/geocode/json?latlng="+ lat +","+ lng +"&key=AIzaSyBspTNgVFapTrsO_xYRY5Zzbx1nfDJPVXg", true);
+        xhttp.send();
+    }
     
     return {
       init: init
