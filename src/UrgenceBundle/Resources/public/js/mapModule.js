@@ -2,7 +2,7 @@ var mapModule = (function() {
     
     var markers = [];
     var markersData = [];
-    var cards = [];
+    var cpt = 0;
     
     function init(map_id) {
         var map = new google.maps.Map(document.getElementById(map_id), {
@@ -88,7 +88,7 @@ var mapModule = (function() {
             + "<td><strong>"+ data.prenom + " " + data.nom +"</strong></td>"
             + "</tr>"
             + "<tr>"
-            + "<td>Lancée à "+ data.heure +"</td>"
+            + "<td>Lancée à "+ data.heure.date.toString().substring(11) +"</td>"
             + "</tr>"
             + "<tr>"
             + "<td>Type : " + data.severity + "</td>"
@@ -104,8 +104,9 @@ var mapModule = (function() {
     
     function setInfoPanel(arrayData) {
         $.each(arrayData, function(index, data) {
-            $(".cards-container").append(getCard(index, data));
-            $('#card-'+index).paperCollapse();
+            cpt++;
+            $(".cards-container").append(getCard(cpt, data));
+            $('#card-'+cpt).paperCollapse();
         });
     };
     
