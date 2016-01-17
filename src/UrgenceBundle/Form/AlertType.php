@@ -29,7 +29,7 @@ class AlertType extends AbstractType
                 'choice_label' => 'name'
             ))
             ->add('public_user', new PublicUserType())
-            ->add('save', 'submit')
+            ->add('save', 'submit', array('label' => 'Envoyer'))
         ;
     }
     
