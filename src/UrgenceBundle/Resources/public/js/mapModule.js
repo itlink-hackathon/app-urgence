@@ -110,6 +110,7 @@ var mapModule = (function() {
     };
     
     function getCard(index, properties) {
+        var genreStr = (properties.sexe == 'M') ? '<i class="fa fa-mars"></i> Masculin' : '<i class="fa fa-venus"></i> Féminin';
         return '<div id="card-'+index+'" class="collapse-card '+properties.color+'">'
              + '<div class="title"> <strong><i class="fa fa-user"></i> - '+ properties.prenom + ' ' + properties.nom +'</strong> </div>'
              +  '<div class="body">'
@@ -127,8 +128,8 @@ var mapModule = (function() {
              +     '<p id="age" class="form-control-static">'+properties.age+'</p>'
              + '</div>'
              + '<div class="form-group">'
-             +     '<label for="sexe">Sexe : </label>'
-             +     '<p id="sexe" class="form-control-static">'+properties.sexe+'</p>'
+             +     '<label for="sexe">Genre : </label>'
+             +     '<p id="sexe" class="form-control-static">'+genreStr+'</p>'
              + '</div>'
              + '<div class="form-group">'
              + '<label for="pos">Localisation : </label>'
@@ -136,7 +137,7 @@ var mapModule = (function() {
              + '</div>'
              + '<div class="form-group">'
              + '<label for="heure">Heure de l\'alerte : </label>'
-             + '<p id="heure" class="form-control-static">'+new Date(properties.heure).toLocaleTimeString()+'</p>'
+             + '<p id="heure" class="form-control-static">'+properties.heure.date.toString().substring(11)+'</p>'
              + '</div>'
              + '</form>'
              + '</div>'

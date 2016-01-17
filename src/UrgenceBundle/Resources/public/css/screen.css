@@ -146,6 +146,10 @@ form {
     padding-right: 20px;
 }
 
+.cards-container .collapse-card p {
+    padding: 0;
+}
+
 .cards-container .collapse-card {
     padding: 0;
 }
