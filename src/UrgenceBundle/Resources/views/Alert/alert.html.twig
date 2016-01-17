@@ -107,12 +107,14 @@
     $( document ).ready(function() {
         $('#button-post').click(function(){
             var data = {};
-            data['timestamp_alert'] = new Date().getTime();
+            data['timestamp_current'] = new Date().getTime();
             data['timestamp_position'] = new Date().getTime()+99999; 
-            data['position'] = {'longitude' : "0000", 'latitude' : "0000" };
+            data['longitude'] = 34.343434;
+            data['latitude'] = 56.565667;
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function(position){
-                    data['position'] = {'longitude' : position.coords.longitude, 'latitude' : position.coords.latitude };
+                    data['longitude'] = position.coords.longitude;
+                    data['latitude'] = position.coords.latitude;
                 });
             }
             $.ajax({

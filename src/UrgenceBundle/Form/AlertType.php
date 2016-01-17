@@ -39,7 +39,8 @@ class AlertType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'UrgenceBundle\Entity\Alert'
+            'data_class' => 'UrgenceBundle\Entity\Alert',
+            'cascade_validation' => true
         ));
     }
 }

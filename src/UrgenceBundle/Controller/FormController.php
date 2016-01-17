@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use UrgenceBundle\Entity\Alert;
 use UrgenceBundle\Entity\Severity;
+use UrgenceBundle\Entity\PublicUser;
 use UrgenceBundle\Form\AlertType;
 use Symfony\Component\HttpFoundation\Session\Session;
 
@@ -20,6 +21,8 @@ class FormController extends Controller
      */
     public function insertAction(Request $request)
     {
+        $user = new PublicUser();
+        $user->setFirstName();
         $alert = new Alert();
         $severity = new Severity();
         $severity->setName("name1");
@@ -47,9 +50,11 @@ class FormController extends Controller
         $alert = new Alert();
 
         $form = $this->get('form.factory')->create(new AlertType(), $alert);
-
+        
         if ($form->handleRequest($request)->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $alert->setDatetimeSent(new \DateTime('now'));
+            $alert->setDatetimeReceived(new \DateTime('now'));
             $em->persist($alert);
             $em->flush();
 
