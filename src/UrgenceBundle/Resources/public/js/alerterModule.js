@@ -22,7 +22,32 @@ var alerterModule = (function() {
                 setPosition(e.latLng, map);
             }
         });
+
+        //Event for unfocus address input
+        var addressbtn = $('#address_btn');
+
+        addressbtn.click(function() {
+            unfocusing(map);
+        });
     };
+
+    function unfocusing(map) {
+        var address = $('#address_input').val();
+       var geocoder = new google.maps.Geocoder();
+        geocoder.geocode({'address' : address}, function (results, status)
+        {
+        if (status == google.maps.GeocoderStatus.OK) {
+            //setPosition(new google.map.LatLng{lat: results[0].geometry.location.lat(), lng: results[0].geometry.location.lng()},map);
+            var lat = results[0].geometry.location.lat();
+            var long = results[0].geometry.location.lng();
+            var latlng = new google.maps.LatLng(lat,long);
+            cleanMarkers();
+            setPosition(latlng,map);
+            }
+         else {
+            alert("Geocode was not successful for the following reason: " + status);
+        }});
+    }
     
     function enableDisableObtenirPositionBtn() {
         if (!$("#obtenir-position-radio").is(":checked")) {
@@ -121,11 +146,10 @@ var alerterModule = (function() {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
             if (xhttp.readyState == 4 && xhttp.status == 200) {
-                //document.getElementById("demo").innerHTML = xhttp.responseText;
                 var response = JSON.parse(xhttp.responseText);
                 console.log(response["results"]);
                 if(response["status"] == "OK") {
-                    document.getElementById("adresse-container").innerHTML = response["results"][0]["formatted_address"];
+                    document.getElementById("address_input").value = response["results"][0]["formatted_address"];
                 }
             }
         };
