@@ -5,50 +5,111 @@
 {% block content %}
 <div class="container-fluid">
     <div class="row">
-        <div class="col-xs-12 col-md-9 col-lg-10">
-            <div id="map-voir-alertes"></div>
+        <div class="col-xs-12 col-md-9 col-lg-9">
+            <div id="map-voir-alertes" style="padding-left: 0; padding-right: 0;"></div>
         </div>
-        <div class="col-xs-12 col-md-3 col-lg-2" style="padding-left: 0; padding-right: 0;">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                  <h3 class="panel-title"><a href="#demo" data-toggle="collapse"><i class="fa fa-user"> - </i> Carte 1</a></h3>
-              </div>
-              <div id="demo" class="panel-body panel-form">
-                <form role="form">
-                    <div class="form-group">
-                        <label for="nom">Nom : </label>
-                        <p id="nom" class="form-control-static"></p>
-                    </div>
-                    <div class="form-group">
-                        <label for="nom">Prénom : </label>
-                        <p id="nom" class="form-control-static"></p>
-                    </div>
-                    <div class="form-group">
-                        <label for="nom">Âge : </label>
-                        <p id="nom" class="form-control-static"></p>
-                    </div>
-                    <div class="form-group">
-                        <label for="nom">Sexe : </label>
-                        <p id="nom" class="form-control-static"></p>
-                    </div>
-                    <div class="form-group">
-                        <label for="nom">Localisation : </label>
-                        <p id="nom" class="form-control-static"></p>
-                    </div>
-                    <div class="form-group">
-                        <label for="nom">Heure de l'alerte : </label>
-                        <p id="nom" class="form-control-static"></p>
-                    </div>
-                </form>
-              </div>
+        <div class="col-xs-12 col-md-3 col-lg-3 cards-container">
+            <div class="collapse-card red">
+                <div class="title"> <strong><i class="fa fa-user"></i> - Hervé Ferrand</strong> </div>
+                <div class="body">
+                    <form role="form">
+                        <div class="form-group">
+                            <label for="nom">Nom : </label>
+                            <p id="nom" class="form-control-static"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="nom">Prénom : </label>
+                            <p id="nom" class="form-control-static"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="nom">Âge : </label>
+                            <p id="nom" class="form-control-static"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="nom">Sexe : </label>
+                            <p id="nom" class="form-control-static"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="nom">Localisation : </label>
+                            <p id="nom" class="form-control-static"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="nom">Heure de l'alerte : </label>
+                            <p id="nom" class="form-control-static"></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="collapse-card black">
+                <div class="title"> <strong><i class="fa fa-user"></i> - Hugo Berthier</strong> </div>
+                <div class="body">
+                    <form role="form">
+                        <div class="form-group">
+                            <label for="nom">Nom : </label>
+                            <p id="nom" class="form-control-static"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="nom">Prénom : </label>
+                            <p id="nom" class="form-control-static"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="nom">Âge : </label>
+                            <p id="nom" class="form-control-static"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="nom">Sexe : </label>
+                            <p id="nom" class="form-control-static"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="nom">Localisation : </label>
+                            <p id="nom" class="form-control-static"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="nom">Heure de l'alerte : </label>
+                            <p id="nom" class="form-control-static"></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="collapse-card green">
+                <div class="title"> <strong><i class="fa fa-user"></i> - Martin Soudard</strong> </div>
+                <div class="body">
+                    <form role="form">
+                        <div class="form-group">
+                            <label for="nom">Nom : </label>
+                            <p id="nom" class="form-control-static"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="nom">Prénom : </label>
+                            <p id="nom" class="form-control-static"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="nom">Âge : </label>
+                            <p id="nom" class="form-control-static"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="nom">Sexe : </label>
+                            <p id="nom" class="form-control-static"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="nom">Localisation : </label>
+                            <p id="nom" class="form-control-static"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="nom">Heure de l'alerte : </label>
+                            <p id="nom" class="form-control-static"></p>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 </div>
 <script type="text/javascript">
 function initMap() {
-  var map = mapModule.init('map-voir-alertes'); 
+  var map = mapModule.init('map-voir-alertes');
   mapModule.loadData(map);
+  setInterval(function() { mapModule.loadData(map); }, 2000);
 };
 </script>
 <script async defer
