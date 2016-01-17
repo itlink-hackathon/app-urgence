@@ -45,3 +45,10 @@ CREATE DATABASE IF NOT EXISTS app-urgence DEFAULT CHARACTER SET utf8 DEFAULT COL
 CREATE DATABASE app-urgence DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
 
 grant all privileges on *.* to bill@localhost identified by 'pass' with grant option;
+
+
+git reset --hard
+git pull
+php composer.phar update
+chmod -R 777 .
+service apache2 restart
