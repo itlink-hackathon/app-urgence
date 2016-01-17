@@ -88,10 +88,13 @@ var mapModule = (function() {
             + "<td><strong>"+ data.prenom + " " + data.nom +"</strong></td>"
             + "</tr>"
             + "<tr>"
-            + "<td>Lancée à "+ data.heure.date.toString().substring(11) +"</td>"
+            + "<td>Lancée à "+ data.heure.date.toString().substring(11).substring(0,8) +"</td>"
             + "</tr>"
             + "<tr>"
             + "<td>Type : " + data.severity + "</td>"
+            + "<tr>"
+            + "<td>" + data.description + "</td>"
+            + "</tr>"
             + "</table>"
     };
     
@@ -138,7 +141,11 @@ var mapModule = (function() {
              + '</div>'
              + '<div class="form-group">'
              + '<label for="heure">Heure de l\'alerte : </label>'
-             + '<p id="heure" class="form-control-static">'+properties.heure.date.toString().substring(11)+'</p>'
+             + '<p id="heure" class="form-control-static">'+properties.heure.date.toString().substring(11).substring(0,8)+'</p>'
+             + '</div>'
+             + '<div class="form-group">'
+             + '<label for="heure">Description : </label>'
+             + '<p id="heure" class="form-control-static">'+properties.description+'</p>'
              + '</div>'
              + '</form>'
              + '</div>'
