@@ -21,3 +21,7 @@ urgence_testInsert:
 urgence_allalerts:
     path:     /all-alerts
     defaults: { _controller: UrgenceBundle:Alert:allAlerts }
+    
+urgence_cleardatabase:
+    path:     /clear-datas
+    defaults: { _controller: UrgenceBundle:Alert:clearDatas }
