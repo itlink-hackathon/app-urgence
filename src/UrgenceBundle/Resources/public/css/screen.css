@@ -164,6 +164,11 @@ form {
     color: #fff;
 }
 
+.cards-container .collapse-card.yellow .title {
+    background: #ebd263;
+    color: #fff;
+}
+
 .cards-container .collapse-card.green .title {
     background: #4ea13a;
     color: #fff;
