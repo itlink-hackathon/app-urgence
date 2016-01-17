@@ -56,6 +56,7 @@ class AndroidComController extends Controller
                 $severity = $this->getDoctrine()->getRepository('UrgenceBundle:Severity')->find(3);
                 $alerteToAdd->setSeverity($severity);
                 $alerteToAdd->setInfo($data['drive_link']);
+                $alerteToAdd->setPublicUser($newUserToAdd);
                 
                 // add new datas
                 $em = $this->getDoctrine()->getManager();
