@@ -40,3 +40,8 @@ en cas d'erreur sur la timezone, éditer app/AppKernel.php et ajouter après les
 date_default_timezone_set('UTC');
 
 en cas d'erreur 500 (ou rien affiché), regarder les logs a pache (/var/log/apache2/error.log) : il manquait sqlite (apt-get install php5-sqlite)
+CREATE DATABASE IF NOT EXISTS app-urgence DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
+
+CREATE DATABASE app-urgence DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
+
+grant all privileges on *.* to bill@localhost identified by 'pass' with grant option;

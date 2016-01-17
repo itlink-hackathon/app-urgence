@@ -20,8 +20,10 @@ class AlertController extends Controller
     public function allAlertsAction()
     {
         $geojson = array();
+        $geojson['type'] = "FeatureCollection";
         $alerts = null;
         
+        $tmp_geojson = array();
         $alerts = $this->getDoctrine()->getRepository('UrgenceBundle:Alert')->findAll();
         
         foreach($alerts as $alert){
@@ -42,9 +44,10 @@ class AlertController extends Controller
             $item['properties']['title'] = strlen($fullName) > 0? $fullName: "-" ;
             $item['properties']['description'] = strlen($description) > 0? $description : "-";
             $item['properties']['marker-color'] = "#fc4353"; 
-            $geojson[] = $item;
+            $tmp_geojson[] = $item;
         }        
         
+        $geojson['features'] = $tmp_geojson;
         return new JsonResponse($geojson);
     }
     

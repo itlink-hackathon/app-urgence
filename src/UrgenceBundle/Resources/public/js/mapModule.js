@@ -5,11 +5,15 @@ var mapModule = (function() {
         center: {lat: 48.89668, lng: 2.3185},
         zoom: 8
         });
-        map.data.loadGeoJson(BASE_URL + '/all-alerts');
         return map;
     };
     
+    function loadData(map) {
+       map.data.loadGeoJson(BASE_URL + '/all-alerts');  
+    };
+    
     return {
-        init: init
+        init: init,
+        loadData: loadData
     };
 })();
