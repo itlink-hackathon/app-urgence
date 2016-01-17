@@ -19,6 +19,14 @@ class PublicUserType extends AbstractType
             ->add('firstName', 'text')
             ->add('phone', 'text')
             ->add('mail','email')
+            ->add('genre', 'choice', array(
+                'choices' => array('M' => 'Homme', 'F' => 'Femme')
+            ))
+            ->add('age', 'integer', array(
+                    'label' => 'Age', 
+                    'data' => 0, // default value
+                    'precision' => 0, // disallow floats
+                ))
         ;
     }
     

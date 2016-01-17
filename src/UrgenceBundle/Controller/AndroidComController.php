@@ -38,7 +38,14 @@ class AndroidComController extends Controller
                 $newUserToAdd->setFirstName($data['firstname']);
                 $newUserToAdd->setLastName($data['lastname']);        
                 $newUserToAdd->setPhone($data['phone_number']);
+                $newUserToAdd->setGenre($data['genre']);
                 
+                if(is_integer(intval($data['age']))){
+                    $newUserToAdd->setAge(intval($data['age']));
+                }else{
+                    $newUserToAdd->setAge(null);
+                }
+                                          
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($newUserToAdd);
                 $em->flush();
@@ -79,7 +86,9 @@ class AndroidComController extends Controller
         $result &= isset($data['firstname']);
         $result &= isset($data['lastname']);        
         $result &= isset($data['phone_number']);    
-        $result &= isset($data['drive_link']);
+        $result &= isset($data['drive_link']);     
+        $result &= isset($data['genre']);    
+        $result &= isset($data['age']);
         
         // Check not null datas
         $result &= $data['timestamp_current']!=null;
@@ -89,7 +98,9 @@ class AndroidComController extends Controller
         $result &= $data['firstname']!=null;
         $result &= $data['lastname']!=null;        
         $result &= $data['phone_number']!=null;    
-        $result &= $data['drive_link']!=null;
+        $result &= $data['drive_link']!=null;        
+        $result &= $data['genre']!=null;    
+        $result &= $data['age']!=null;
         
         return $result;
     }
