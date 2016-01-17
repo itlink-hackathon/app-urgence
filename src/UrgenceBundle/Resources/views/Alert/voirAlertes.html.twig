@@ -47,7 +47,8 @@
 </div>
 <script type="text/javascript">
 function initMap() {
-  mapModule.init('map-voir-alertes');  
+  var map = mapModule.init('map-voir-alertes'); 
+  mapModule.loadData(map);
 };
 </script>
 <script async defer
