@@ -102,37 +102,6 @@
     </div>
 </form>
 
-<button id="button-post" class="btn btn-default">Click Send Post test (TO REMOVE) </button>
-<script type="text/javascript">
-    $( document ).ready(function() {
-        $('#button-post').click(function(){
-            var data = {};
-            data['timestamp_current'] = new Date().getTime();
-            data['timestamp_position'] = new Date().getTime()+99999; 
-            data['longitude'] = 34.343434;
-            data['latitude'] = 56.565667;
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function(position){
-                    data['longitude'] = position.coords.longitude;
-                    data['latitude'] = position.coords.latitude;
-                });
-            }
-            $.ajax({
-                  type: "POST",
-                  url: BASE_URL+"/api/new-alerte",
-                  data: JSON.stringify(data),
-                  success: function(response){
-                      console.log(response);
-                  },
-                  dataType: 'json',
-                  error:function(msg){
-                      alert( "Error !: " + msg );
-                  }
-            });
-        });
-    });
-</script>
-
 <script type="text/javascript">
 function initMap() {
     var map = mapModule.init('map-indiquer-position');

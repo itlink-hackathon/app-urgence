@@ -3,4 +3,27 @@
 {% block title %}Accueil{% endblock %}
 
 {% block content %}
+<div>
+    <span></span>
+</div>
+<div>
+    <button id="button-reset" class="btn btn-default">Click to clear datas</button>
+    <script type="text/javascript">
+        $( document ).ready(function() {
+            $('#button-reset').click(function(){
+                $.ajax({
+                      type: "GET",
+                      url: BASE_URL+"/clear-datas",
+                      success: function(response){
+                          console.log(response);
+                      },
+                      dataType: 'json',
+                      error:function(msg){
+                          alert( "Error !: " + msg );
+                      }
+                });
+            });
+        });
+    </script>
+</div>
 {% endblock %}
