@@ -23,10 +23,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `alert`
+-- Structure de la table `ALERT`
 --
 
-CREATE TABLE IF NOT EXISTS `alert` (
+CREATE TABLE IF NOT EXISTS `ALERT` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_parse` varchar(80) DEFAULT NULL,
   `public_user_id` int(11),
@@ -46,10 +46,10 @@ CREATE TABLE IF NOT EXISTS `alert` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `alert_type`
+-- Structure de la table `ALERT_TYPE`
 --
 
-CREATE TABLE IF NOT EXISTS `alert_type` (
+CREATE TABLE IF NOT EXISTS `ALERT_TYPE` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
@@ -58,10 +58,10 @@ CREATE TABLE IF NOT EXISTS `alert_type` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `public_user`
+-- Structure de la table `PUBLIC_USER`
 --
 
-CREATE TABLE IF NOT EXISTS `public_user` (
+CREATE TABLE IF NOT EXISTS `PUBLIC_USER` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `last_name` varchar(50) DEFAULT NULL,
   `first_name` varchar(50) DEFAULT NULL,
@@ -73,10 +73,10 @@ CREATE TABLE IF NOT EXISTS `public_user` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `severity`
+-- Structure de la table `SEVERITY`
 --
 
-CREATE TABLE IF NOT EXISTS `severity` (
+CREATE TABLE IF NOT EXISTS `SEVERITY` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
@@ -90,9 +90,9 @@ CREATE TABLE IF NOT EXISTS `severity` (
 -- Contraintes pour la table `alert`
 --
 ALTER TABLE `alert`
-  ADD CONSTRAINT `fk_user` FOREIGN KEY (`public_user_id`) REFERENCES `public_user` (`id`),
-  ADD CONSTRAINT `fk_severity` FOREIGN KEY (`severity_id`) REFERENCES `severity` (`id`),
-  ADD CONSTRAINT `fk_type` FOREIGN KEY (`alert_type_id`) REFERENCES `alert_type` (`id`);
+  ADD CONSTRAINT `fk_user` FOREIGN KEY (`public_user_id`) REFERENCES `PUBLIC_USER` (`id`),
+  ADD CONSTRAINT `fk_severity` FOREIGN KEY (`severity_id`) REFERENCES `SEVERITY` (`id`),
+  ADD CONSTRAINT `fk_type` FOREIGN KEY (`alert_type_id`) REFERENCES `ALERT_TYPE` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
