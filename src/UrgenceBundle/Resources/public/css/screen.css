@@ -11,6 +11,10 @@ body,
     padding: 10px;
 }
 
+.btn.margin-bottom-20 {
+    margin-bottom: 20px;
+}
+
 .btn.straight {
     border-radius: 0;
 }
