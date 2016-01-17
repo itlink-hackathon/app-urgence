@@ -5,7 +5,7 @@ var mapModule = (function() {
         center: {lat: 48.89668, lng: 2.3185},
         zoom: 8
         });
-        map.data.loadGeoJson(BASE_URL + '/all-alerts.php');
+        map.data.loadGeoJson(BASE_URL + '/all-alerts');
         return map;
     };
     
