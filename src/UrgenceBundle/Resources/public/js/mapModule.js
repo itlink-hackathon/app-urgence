@@ -5,6 +5,7 @@ var mapModule = (function() {
         center: {lat: 48.89668, lng: 2.3185},
         zoom: 8
         });
+        map.data.loadGeoJson('http://localhost/app-urgence/app_dev.php/all-alerts.php');
         return map;
     };
     

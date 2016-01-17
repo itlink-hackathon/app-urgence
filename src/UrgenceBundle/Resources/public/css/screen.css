@@ -139,6 +139,25 @@ form {
     margin-bottom: 10px;
 }
 
+#page-content .panel > .panel-heading {
+    background: #db1616;
+    border: none;
+    -moz-box-shadow: 0px 1px 3px 0px #656565;
+    -webkit-box-shadow: 0px 1px 3px 0px #656565;
+    -o-box-shadow: 0px 1px 3px 0px #656565;
+    box-shadow: 0px 1px 3px 0px #656565;
+    filter:progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=180, Strength=3);
+    color: #fff;
+}
+
+.panel-form .form-group {
+    margin-bottom: 10px;
+}
+
+.panel-form .form-group .form-control-static {
+    min-height: 0;
+}
+
 /* * * * * Map * * * * */
 #map-voir-alertes {
     height: 500px;
