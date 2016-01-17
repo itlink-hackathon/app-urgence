@@ -24,15 +24,11 @@ var mapModule = (function() {
                var properties = value["properties"];
                data["title"] = properties["title"];
                data["description"] = properties["description"];
-                if (!containsMarker(data.title)) {
+               if (!containsMarker(data.title)) {
                     addMarker(map, data, array);
                }
            });
-           cleanMarkers();
-           for(var i = 0; i < array.length; i++) {
-               array[i]["obj"].setMap(map);
-           }
-           markers = array;
+           markers = markers.concat(array);
            console.log(markers.length);
        });
     };
@@ -50,13 +46,14 @@ var mapModule = (function() {
         marker.addListener('click', function() {
             infowindow.open(map, marker);
         });
+        marker.setMap(map);
         array.push({"title" : data.title, "obj": marker});
     };
     
     function containsMarker(title) {
         var found = false;
         for(var i = 0; i < markers.length; i++) {
-            if (markers[i].title == data.title) {
+            if (markers[i].title == title) {
                 found = true;
                 break;
             }
@@ -77,7 +74,7 @@ var mapModule = (function() {
     
     function cleanMarkers() {
       for(var i = 0; i < markers.length; i++) {
-        markers[i].setMap(null);
+        markers[i]["obj"].setMap(null);
       }
       markers = [];
     };
